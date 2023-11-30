@@ -37,24 +37,9 @@ func contactHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func faqHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	fmt.Fprint(w,
-		`<h1>FAQ Page</h1>
-		<ul>
-			<li>
-				<p>Q: Is there a free version?</p>
-				<p>A: Yes! We offer a free trial for 30 days on any paid plan.</p>
-			</li>
-			<li>
-				<p>Q: What are your support hours?</p>
-				<p>A: We have support staff answering emails 24/7, though response times may be a bit slower on weekends.</p>
-			</li>
-			<li>
-				<p>Q: How do I contact support?</p>
-				<p>A: Email us!</p>
-			</li>
-		</ul>
-		`)
+	tplPath := filepath.Join("templates", "faq.gohtml")
+	executeTemplate(w, tplPath)
+
 }
 
 func main() {
