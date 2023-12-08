@@ -7,6 +7,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/snow4rider/lenslocked/controllers"
+	"github.com/snow4rider/lenslocked/templates"
 	"github.com/snow4rider/lenslocked/views"
 )
 
@@ -16,21 +17,21 @@ func main() {
 	r.Get(
 		"/",
 		controllers.StaticHandler(
-			views.Must(views.Parse(filepath.Join("templates", "home.gohtml"))),
+			views.Must(views.ParseFS(templates.FS, "home.gohtml")),
 		),
 	)
 
 	r.Get(
 		"/contact",
 		controllers.StaticHandler(
-			views.Must(views.Parse(filepath.Join("templates", "contact.gohtml"))),
+			views.Must(views.ParseFS(templates.FS, "contact.gohtml")),
 		),
 	)
 
 	r.Get(
 		"/faq",
 		controllers.StaticHandler(
-			views.Must(views.Parse(filepath.Join("templates", "faq.gohtml"))),
+			views.Must(views.ParseFS(templates.FS, "faq.gohtml")),
 		),
 	)
 
