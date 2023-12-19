@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"path/filepath"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/snow4rider/lenslocked/controllers"
@@ -30,7 +29,7 @@ func main() {
 
 	r.Get(
 		"/faq",
-		controllers.StaticHandler(
+		controllers.FAQ(
 			views.Must(views.ParseFS(templates.FS, "faq.gohtml")),
 		),
 	)
